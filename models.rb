@@ -10,6 +10,9 @@ class Page
   property :parent_id,    Integer, :default => nil
   property :show_title,   Boolean, :default => true
 
+# Default order
+  default_scope(:default).update(:order => [:position]) 
+
 # Associations 
   belongs_to  :parent,    :class_name => "Page",   :child_key => [:parent_id]
   has n,      :children,  :class_name => "Page",   :child_key => [:parent_id]
@@ -17,7 +20,7 @@ class Page
  
 # Some named_scopes
 def self.published
-  all(:published_at.not => nil)
+  all(:published_on.not => nil)
 end
 
 def self.roots

@@ -1,0 +1,10 @@
+<h1>Admin Section</h1>
+<h2>Add A New Page</h2>
+<form action="/create/page" method="post">
+<%= render_partial :form,{ :page => @page } %>
+</form>
+
+<ul>
+<%= render_partial @pages %>
+</ul>
+

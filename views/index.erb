@@ -1,6 +1,11 @@
 <h1>Index</h1>
 
-<form action="/create/page" method="POST">
-    <label>Name<input type="text" name="title" id="title"></label>
-    <input type="submit" value="Save"/>
-</form>
+<h2>Current Root Pages</h2>
+
+<ul>
+<% @pages.each do |page| %>
+<li><%= page.title %></li>
+<% end %>
+</ul>
+
+

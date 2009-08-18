@@ -1,50 +1,71 @@
 # Controlers go in here
 
+# Show home page
 get '/' do
-  @pages = Page.all
-  erb :index
+  @page = Page.roots.first
+  erb :show
+end
+
+#new and index in one
+get '/admin' do
+  @page = Page.new
+  @pages = Page.roots
+  erb :admin
 end
 
 #create
 post '/create/page' do
-  @page = Page.new(:title => params[:title],:parent_id => 1)
+  @page = Page.new(params[:page])
+  @page.show_title = false unless params[:show_title]
+  @page.published_on = Time.now if params[:publish]
   if @page.save
     status 201
-    redirect "/page/" + @page.id.to_s
+    redirect "/" + @page.path
   else
     status 412
-    redirect '/'   
+    redirect '/admin'   
+  end
+end
+
+#edit
+get '/page/:id' do
+  @page = Page.get!(params[:id])
+  if @page
+    erb :edit
+  else
+    redirect '/admin'
   end
 end
 
 #update
 put '/page/:id' do
-  @page = Page.get(params[:id])
-  if @page.save
+  @page = Page.get!(params[:id])
+  @page.show_title = false unless params[:show_title]
+  @page.published_on = params[:publish] ?  Time.now : nil
+  if @page.update_attributes(params[:page])
     status 201
-    redirect "/"
+    redirect "/" + @page.path
   else
     status 412
-    redirect '/'   
+    redirect '/admin'   
   end
 end
 
-#show
-get '/page/:id' do
-  @page = Page.get(params[:id])
-  if @page
-    erb :show
-  else
-    redirect '/'
-  end
+#delete confirmation
+get '/page/:id/confirm-delete' do
+  @page = Page.get!(params[:id])
+  erb :delete
 end
 
-#show
+#delete
+delete '/page/:id' do
+  @page = Page.get!(params[:id])
+  @page.destroy
+  redirect '/admin'  
+end
+
+#show - should come last in order
 get '/*' do
-  #@page = Page.get(params[:splat])
- #if @page
-    erb :show
-  #else
-    #redirect '/'
-  #end
+  @page = Page.first(:path => params[:splat])
+  erb :show
 end

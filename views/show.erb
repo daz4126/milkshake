@@ -1,13 +1,8 @@
+<% if @page.show_title %>
 <h1><%= @page.title %></h1>
-<p>
-This page's permalink is <%= @page.permalink %>
-</p>
-<p>
-This page's path is <%= @page.path %>
-</p>
-<p>
-This page's level is <%= @page.level %>
-</p>
-<p>
-This page's position is <%= @page.position %>
-</p>
+<% end %>
+
+<%= markdown(@page.content) %>
+
+
+<%= link_to "/admin","Back to Admin" %>
