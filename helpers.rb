@@ -8,31 +8,29 @@ end
 def page_link page
   "<a href=\"#{page.path}\">#{page.title}</a>"
 end
-
-def test
-  "Kabooey - the % trick works!"
-end
-
-def page_level
-  "This page is level " + @page.level.to_s
-end
-
-def markdown(text)
-  text.gsub!(/(%\s*)(\w+)/) do |function|
+    
+def navmenu(pages=:roots,opts={})
+  pages = @page.respond_to?(pages) ? @page.send(pages) : Page.roots
+  output = "<ul>"
+  pages.each{ |page| output << "\n<li><a href=\"#{page.url}\">#{page.title}</a></li>"}
+  output << "\n</ul>"
+end 
+  
+def shakedown(text)
+  text.gsub!(/(%\s*)([\w\(\)]+)/) do |match|
     case $2
-    when "test"
-      test
-    when "page_level"
-      page_level
-    else
-      text
+    when "navmenu":navmenu
+    when "navmenu(roots)":navmenu
+    when "navmenu(siblings)":navmenu(:siblings)
+    when "navmenu(sas)":navmenu(:self_and_siblings)
+    when "navmenu(children)":navmenu(:children)
+    else match
     end  
   end 
-  RDiscount.new(text).to_html
+  RDiscount.new(text).to_html.gsub('h1>','h3>').gsub('h2>','h4>')
 end
 
 def render_partial(template,locals=nil)
-  layout={:layout => false} # layout is always false for partials
   if template.is_a?(String) || template.is_a?(Symbol) # check if the template argument is a string or symbol
     template=('_' + template.to_s).to_sym # make sure the template is a symbol
   else # otherwise is must be an object
@@ -40,14 +38,14 @@ def render_partial(template,locals=nil)
     template=template.is_a?(Array) ? ('_' + template.first.class.to_s.downcase).to_sym : ('_' + template.class.to_s.downcase).to_sym #extract the template name from the object name
   end
   if locals.is_a?(Hash) # this means that the locals have been set manually, so just render the template using those variables
-    erb(template,layout,locals)      
+    erb(template,{:layout => false},locals)      
   elsif locals # otherwise, the locals will be the same name as the partial
     locals=[locals] unless locals.respond_to?(:inject) # a simple object won't repsond to the inject method, but if it is put into an array on its own it will
     locals.inject([]) do |output,element| # cycle through setting each local variable
-      output << erb(template,layout,{template.to_s.delete("_").to_sym => element})
+      output << erb(template,{:layout=>false},{template.to_s.delete("_").to_sym => element})
     end.join("\n") # join up each partial with a new line to make the output html look nicer
   else # if there are no locals then just render the partial with that name
-    erb(template,layout)
+    erb(template,{:layout => false})
   end
 end
   

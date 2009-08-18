@@ -60,6 +60,10 @@ def permalink
   title.downcase.gsub(/\W/, '-').gsub(/\-+/, '-')
 end
 
+def url
+  "/" + self.path
+end
+
 #test if a page is a root page
 def root?
   parent_id == nil

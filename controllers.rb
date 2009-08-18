@@ -20,7 +20,7 @@ post '/create/page' do
   @page.published_on = Time.now if params[:publish]
   if @page.save
     status 201
-    redirect "/" + @page.path
+    redirect @page.url
   else
     status 412
     redirect '/admin'   
@@ -44,7 +44,7 @@ put '/page/:id' do
   @page.published_on = params[:publish] ?  Time.now : nil
   if @page.update_attributes(params[:page])
     status 201
-    redirect "/" + @page.path
+    redirect @page.url
   else
     status 412
     redirect '/admin'   
@@ -67,5 +67,5 @@ end
 #show - should come last in order
 get '/*' do
   @page = Page.first(:path => params[:splat])
-  erb :show
+  erb :show,{:layout => false}
 end
