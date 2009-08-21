@@ -1,23 +1,26 @@
-<label for="title">Title</label>
+<fieldset>
+<legend>Page Details</legend>
+<div>
+<label for="title" class="hidden">Title</label>
 <input type="text" name="page[title]" id="title" value="<%= page.title %>">
-<label for="show_title">Show Title?</label>
-<input type="checkbox" name="show_title" id="show_title" value="true" <%= "checked" if page.show_title %>/>
-<label for="parent_id">Parent Page</label>
+<input type="checkbox" name="show_title" id="show_title" value="true" <%= "checked" if page.show_title %>>
+<label for="show_title">show/hide title</label>
+</div>
+
+<label for="parent_id">Section:</label>
 <select id="parent_id" name="page[parent_id]">
-<option value="">Top-Level Page</option>
-<% Page.all.each do |parent| %>
+<option value="">Main Section</option>
+<% (Page.all - [page]).each do |parent| %>
 <option value="<%= parent.id %>" <%= "selected=\"selected\"" if page.parent_id == parent.id %> >
 <%= parent.title %>
 </option>
 <% end %>
 </select>
-
-<label for="content">Content</label>
-<textarea rows="20" cols="80" name="page[content]" id="content"><%= page.content %></textarea>
-<label for="publish">Publish?</label>
+<label for="content" class="hidden">Content</label>
+<textarea rows="16" cols="80" name="page[content]" id="content"><%= page.content %></textarea>
+<div>
+<label for="publish">Publish</label>
 <input type="checkbox" name="publish" id="publish" value="true" <%= "checked" if page.published? %>/>
-
-
-
-
+</div>
+</fieldset>
 <input type="submit" value="Save" class="submit-button">

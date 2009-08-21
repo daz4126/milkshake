@@ -1,9 +1,8 @@
 <li>
-<%= "DRAFT" unless page.published? %>
 <%= page_link page %>
 <%= link_to "/page/#{page.id}","[EDIT]" %>
 <%= link_to "/page/#{page.id}/confirm-delete","[DELETE]" %>
-
+<%= "DRAFT" unless page.published? %>
 <% unless page.children.empty? %>
 <ul>
 <%= render_partial page.children %>

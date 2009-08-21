@@ -6,11 +6,16 @@ get '/' do
   erb :show
 end
 
-#new and index in one
+#admin dashboard/indedx
 get '/admin' do
-  @page = Page.new
   @pages = Page.roots
   erb :admin
+end
+
+#new
+get '/new/page' do
+  @page = Page.new
+  erb :new
 end
 
 #create
@@ -67,5 +72,11 @@ end
 #show - should come last in order
 get '/*' do
   @page = Page.first(:path => params[:splat])
-  erb :show,{:layout => false}
+  raise NotFound unless @page
+  erb :show
 end
+
+error do
+  erb :page_missing
+end
+

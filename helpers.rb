@@ -17,16 +17,7 @@ def navmenu(pages=:roots,opts={})
 end 
   
 def shakedown(text)
-  text.gsub!(/(%\s*)([\w\(\)]+)/) do |match|
-    case $2
-    when "navmenu":navmenu
-    when "navmenu(roots)":navmenu
-    when "navmenu(siblings)":navmenu(:siblings)
-    when "navmenu(sas)":navmenu(:self_and_siblings)
-    when "navmenu(children)":navmenu(:children)
-    else match
-    end  
-  end 
+  text.gsub!(/(%\s*=\s*)(\w+\s*)\(?(\w*)\)?/) { |match| send($2) }
   RDiscount.new(text).to_html.gsub('h1>','h3>').gsub('h2>','h4>')
 end
 

@@ -1,9 +1,6 @@
 <h1>Admin Section</h1>
-<h2>Add A New Page</h2>
-<form action="/create/page" method="post">
-<%= render_partial :form,{ :page => @page } %>
-</form>
-
+<h3><a href="new/page">+ ADD A New Page +</a></h3>
+<h3>Pages</h3>
 <ul>
 <%= render_partial @pages %>
 </ul>
