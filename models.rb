@@ -14,6 +14,9 @@ class Page
   before :save do
     self.path = self.parent_id ?  self.parent.path + "/" + self.permalink : self.permalink
   end
+  
+# Validations
+  validates_is_unique :path
 
 
 # Default order
@@ -63,7 +66,7 @@ end
 
 # Returns a page's permalink based on its title
 def permalink
-  title.downcase.gsub(/\W/,'-').gsub(/\-+/,'-')
+  title.downcase.gsub(/\W/,'-').squeeze('-')
 end
 
 def url

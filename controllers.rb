@@ -72,11 +72,11 @@ end
 #show - should come last in order
 get '/*' do
   @page = Page.first(:path => params[:splat])
-  raise NotFound unless @page
+  raise error(404) unless @page
   erb :show
 end
 
-error do
+error 404 do
   erb :page_missing
 end
 
