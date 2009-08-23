@@ -10,14 +10,22 @@ def page_link page
 end
     
 def navmenu(pages=:roots,opts={})
-  pages = @page.respond_to?(pages) ? @page.send(pages) : Page.roots
+  pages = @page.respond_to?(pages.to_sym) ? @page.send(pages.to_sym) : Page.roots
   output = "<ul>"
   pages.each{ |page| output << "\n<li><a href=\"#{page.url}\">#{page.title}</a></li>"}
   output << "\n</ul>"
 end 
-  
+
 def shakedown(text)
-  text.gsub!(/(%\s*=\s*)(\w+\s*)\(?(\w*)\)?/) { |match| send($2) }
+  text.gsub!(/(?:%=\s*)(\w+)(?:\s*)(?:\(([\w,\,]+)\))?/) do |match|
+    if $1 && $2 && respond_to?($1.to_sym,$2)
+      send($1.to_sym,$2)
+    elsif $1 && respond_to?($1.to_sym)
+      send($1.to_sym)
+    else
+      match 
+    end
+  end
   RDiscount.new(text).to_html.gsub('h1>','h3>').gsub('h2>','h4>')
 end
 
