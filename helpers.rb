@@ -17,7 +17,7 @@ def navmenu(pages=:roots,opts={})
 end 
   
 def shakedown(text)
-  text.gsub!(/(%\s*)([\w\(\)]+)/) do |match|
+  text.gsub!(/(?:%=\s*)([\w\(\)]+)/) do |match|
     case $2
     when "navmenu":navmenu
     when "navmenu(roots)":navmenu
