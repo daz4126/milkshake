@@ -17,6 +17,15 @@ def navmenu(pages=:roots,opts={})
 end 
 
 def shakedown(text)
+  # allows access to pages properties eg {= title }
+  text.gsub!(/(?:%\s*)(\w+)(?:\s*%)/) do |match|
+    if @page && @page.respond_to?($1.to_sym)
+      @page.send($1.to_sym).to_s
+    else
+      match
+    end
+  end
+  # allows access to helper methods eg %= navmenu
   text.gsub!(/(?:%=\s*)(\w+)(?:\s*)(?:\(([\w,\,]+)\))?/) do |match|
     if $1 && $2 && respond_to?($1.to_sym,$2)
       send($1.to_sym,$2)

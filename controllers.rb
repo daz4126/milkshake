@@ -15,6 +15,7 @@ end
 #new
 get '/new/page' do
   @page = Page.new
+  @page.parent_id = params[:parent]
   erb :new
 end
 

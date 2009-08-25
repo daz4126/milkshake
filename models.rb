@@ -3,7 +3,7 @@ class Page
 # Properties
   property :id,           Serial
   property :title,        String,   :nullable => false, :default => "Title"
-  property :path,         String
+  property :path,         String,  :default => Proc.new { |r, p| r.permalink }
   property :content,      Text, :default => "Enter some content here"
   property :published_on, DateTime, :default => nil
   property :position,     Integer, :default => Proc.new { |r, p| r.siblings.empty? ?  1 : r.siblings.last.position.next }
@@ -12,7 +12,17 @@ class Page
   
 # Callbacks  
   before :save do
-    self.path = self.parent_id ?  self.parent.path + "/" + self.permalink : self.permalink
+    old_path = self.path
+    new_path = self.parent_id ?  self.parent.path + "/" + self.permalink : self.permalink
+    if new_path != old_path
+      self.path = new_path
+    end
+  end
+  
+  after :save do
+    unless self.children.empty?
+      self.children.each { |child| child.save }
+    end
   end
   
 # Validations

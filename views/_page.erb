@@ -1,6 +1,7 @@
 <li>
 <%= page_link page %>
 <%= link_to "/page/#{page.id}","[EDIT]" %>
+<%= link_to "/new/page?parent=#{page.id}","[+ PAGE]" %>
 <%= link_to "/page/#{page.id}/confirm-delete","[DELETE]" %>
 <%= "DRAFT" unless page.published? %>
 <% unless page.children.empty? %>
