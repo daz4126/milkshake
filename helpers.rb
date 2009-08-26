@@ -44,7 +44,7 @@ def shakedown(text)
       match 
     end
   end
-  RDiscount.new(text).to_html.gsub('h1>','h3>').gsub('h2>','h4>')
+  Maruku.new(text).to_html.gsub('h1>','h3>').gsub('h2>','h4>')
 end
 
 def render_partial(template,locals=nil)
