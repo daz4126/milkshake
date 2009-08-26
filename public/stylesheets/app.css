@@ -5,10 +5,10 @@ body{font:62.5%/2 "Nimbus Sans L", helvetica,arial,sans-serif;color:#333;}
 #pages{width:60%;border:#ccc solid 1px;border-top:none;}
 .pages{background:#eee;list-style:none;margin:0;padding:0;}
 .page .title{font-size:1.8em;float:left;text-indent:0.5em;}
-.page a.title,.page a.title:link,.page a.titel:visited{color:#369;text-decoration:none;}
+.page a.title,.page a.title:link,.page a.titel:visited{color:#39c;text-decoration:none;}
 .page a.title:hover{text-decoration:underline;}
 
-.draft{background:#ccc;color:#666;
+.draft{background:#ccc;color:#fff;
 margin-left:2em;padding:0.5em;
 float:left;
 -webkit-border-radius:0.5em;-moz-border-radius:0.5em;border-radius:0.5em;}
@@ -24,9 +24,9 @@ float:left;
 margin:0 1em;padding:0.5em;text-indent:0;
 font-weight:bold;text-decoration:none;
 display:block;float:left;
-border:#ccc solid 1px;
+border:#39c solid 1px;
 -webkit-border-radius:0.5em;-moz-border-radius:0.5em;border-radius:0.5em;}
-.edit-buttons a:hover{background:#999;color:#fff;
+.edit-buttons a:hover{background:#39c;color:#fff;
 text-decoration:none;}
 
 /* forms */
