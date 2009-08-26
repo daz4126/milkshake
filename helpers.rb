@@ -1,12 +1,21 @@
 helpers do
 
+def page_title
+  if @title
+    SITENAME + " * " + @title
+  elsif @page
+    SITENAME + " * " + @page.title
+  else
+    SITENAME
+  end 
+end
 
 def link_to url,text
   "<a href='#{url}'>#{text}</a>"
 end
 
 def page_link page
-  "<a href=\"#{page.path}\">#{page.title}</a>"
+  "<a href=\"#{page.url}\" class=\"title\">#{page.title}</a>"
 end
     
 def navmenu(pages=:roots,opts={})

@@ -7,45 +7,29 @@ get '/' do
 end
 
 #admin dashboard/indedx
-get '/admin' do
-  @pages = Page.roots
-  erb :admin
-end
-
-#new
-get '/new/page' do
-  @page = Page.new
-  @page.parent_id = params[:parent]
-  erb :new
-end
-
-#create
-post '/create/page' do
-  @page = Page.new(params[:page])
-  @page.show_title = false unless params[:show_title]
-  @page.published_on = Time.now if params[:publish]
-  if @page.save
-    status 201
-    redirect @page.url
-  else
-    status 412
-    redirect '/admin'   
-  end
+get '/pages' do
+  @pages = admin? ? Page.roots: Page.roots.published
+  erb :index
 end
 
 #edit
-get '/page/:id' do
-  @page = Page.get!(params[:id])
+['/page/:id', '/new/page'].each do |path|
+get path do
+  authorise
+  @page = Page.get(params[:id]) || Page.new(:parent_id => params[:parent])
   if @page
     erb :edit
   else
-    redirect '/admin'
+    redirect '/pages'
   end
+end
 end
 
 #update
-put '/page/:id' do
-  @page = Page.get!(params[:id])
+['/page/:id', '/page/'].each do |path|
+put path do
+  authorise
+  @page = Page.get(params[:id]) || Page.new(params[:page])
   @page.show_title = false unless params[:show_title]
   @page.published_on = params[:publish] ?  Time.now : nil
   if @page.update_attributes(params[:page])
@@ -53,30 +37,35 @@ put '/page/:id' do
     redirect @page.url
   else
     status 412
-    redirect '/admin'   
+    redirect '/pages'   
   end
 end
+end
 
-#delete confirmation
-get '/page/:id/confirm-delete' do
+# delete confirmation
+get '/page/:id/delete' do
+  authorise
   @page = Page.get!(params[:id])
   erb :delete
 end
 
-#delete
+# delete
 delete '/page/:id' do
+  authorise
   @page = Page.get!(params[:id])
   @page.destroy
-  redirect '/admin'  
+  redirect '/pages'  
 end
 
-#show - should come last in order
+# show - should come last in order
 get '/*' do
   @page = Page.first(:path => params[:splat])
+  authorise if @page.draft?
   raise error(404) unless @page
   erb :show
 end
 
+# errors
 error 404 do
   erb :page_missing
 end

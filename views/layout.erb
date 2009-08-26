@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Milkshake!</title>
+<title><%= page_title %></title>
 <meta charset=utf-8 />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/stylesheets/app.css" />
 <style>
-#page_info{float:right;width:28%}
-form{font-family:arial;width:70%;float:left;}
-legend{display:none;}
-fieldset{border:none;margin:0;padding:0;}
-input{font-size:2em;}
-label{font-size:1.4em;color:#999;}
-label.hidden{display:none;}
-textarea{display:block;width:100%;}
+
 </style>
 </head>
 <body>
-<div id="header">
-<h1>Milkshake!</h1>
-<%= navmenu %>
-</div>
+<%= render_partial :dashboard if admin? %>
 
 <%= yield %>
 
+<div id="footer">
+<p>Made with Milkshake.</p>
+<p><%= link_to "/pages","Sitemap" %></p>
+</div>
 </body>
 </html>

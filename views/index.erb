@@ -1,11 +1,5 @@
-<h1>Index</h1>
-
-<h2>Current Root Pages</h2>
-
-<ul>
-<% @pages.each do |page| %>
-<li><%= page.title %></li>
-<% end %>
+<h1>Site Map</h1>
+<ul id="pages" class="pages">
+<%= render_partial @pages %>
 </ul>
-
 

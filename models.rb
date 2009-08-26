@@ -6,7 +6,7 @@ class Page
   property :path,         String,  :default => Proc.new { |r, p| r.permalink }
   property :content,      Text, :default => "Enter some content here"
   property :published_on, DateTime, :default => nil
-  property :position,     Integer, :default => Proc.new { |r, p| r.siblings.empty? ?  1 : r.siblings.last.position.next }
+  property :position,     Integer, :default => Proc.new { |r, p| r.siblings.empty? ?  1 : r.siblings.size.next }
   property :parent_id,    Integer, :default => nil
   property :show_title,   Boolean, :default => true
   
@@ -16,12 +16,14 @@ class Page
     new_path = self.parent_id ?  self.parent.path + "/" + self.permalink : self.permalink
     if new_path != old_path
       self.path = new_path
+      @new_path = true
     end
   end
   
   after :save do
-    unless self.children.empty?
+    if @new_path && self.children?
       self.children.each { |child| child.save }
+      @new_path = false
     end
   end
   
@@ -96,6 +98,11 @@ end
 #test if a page is a draft or not
 def draft?
   published_on.nil?
+end
+
+#test if a page has children or not
+def children?
+  !self.children.empty?
 end
  
 

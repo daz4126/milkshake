@@ -1,12 +1,18 @@
-<li>
+<li id="page_<%= page.id %>" class="page">
 <%= page_link page %>
-<%= link_to "/page/#{page.id}","[EDIT]" %>
-<%= link_to "/new/page?parent=#{page.id}","[+ PAGE]" %>
-<%= link_to "/page/#{page.id}/confirm-delete","[DELETE]" %>
-<%= "DRAFT" unless page.published? %>
+<%= "<span class=\"draft\">DRAFT</span>" unless page.published? %>
+
+<% if admin? %>
+<div class="edit-buttons">
+<%= link_to "/page/#{page.id}","EDIT" %>
+<%= link_to "/new/page?parent=#{page.id}","+ PAGE" %>
+<%= link_to "/page/#{page.id}/delete","DELETE" %>
+</div>
+<% end %>
+
 <% unless page.children.empty? %>
-<ul>
-<%= render_partial page.children %>
+<ul class="pages">
+<%= admin? ? render_partial(page.children) : render_partial(page.children.published) %>
 </ul>
 <% end %>
 </li>
