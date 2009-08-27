@@ -2,8 +2,12 @@
 
 # Show home page
 get '/' do
-  @page = Page.roots.first
-  erb :show
+  @page = Page.roots.published
+  if @page
+    erb :show
+  else
+    redirect '/pages'
+  end    
 end
 
 #admin dashboard/indedx
