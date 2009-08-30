@@ -31,8 +31,8 @@ text-decoration:none;}
 
 /* forms */
 form{}
-legend{}
-fieldset{margin:0;padding:0;width:66%;float:left;padding:2%;border-color:#39c;}
+legend{display:none;}
+fieldset{margin:0;padding:0;width:66%;float:left;border:none;}
 #title{width:70%;}
 input{font-size:4em;}
 input.submit-button{font-size:2em;}
@@ -42,8 +42,9 @@ textarea{display:block;width:100%;font-size:2.4em;}
 select{font-size:2em;width:80%;}
 a.cancel,a:link.cancel,a:visited.cancel{color:#666}
 
-#page-info{float:right;width:24%;background:#39c;}
-
+#page-info{float:right;width:30%;background:#39c;color:#fff;padding:1em 1%;}
+#page-info label{color:#fff;display:block;}
+#page-info a,#page-info a:link,#page-info a:visited{color:#fff;}
 /* dashboard */
 #dashboard
 {background:#444;color:#ccc;
