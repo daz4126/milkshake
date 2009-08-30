@@ -47,15 +47,17 @@ a.cancel,a:link.cancel,a:visited.cancel{color:#666}
 /* dashboard */
 #dashboard
 {background:#444;color:#ccc;
-margin-bottom:4em;padding:2em;}
+margin-bottom:4em;padding:1em 1em 0;
+overflow:hidden;}
 
 #dashboard a,#dashboard a:link
 {background:#fff;color:#999;
-padding:1em;
-font-size:1.4em;text-decoration:none;}
+padding:0 1em;margin:0 0.5em;
+font-size:1.4em;text-decoration:none;
+float:left;}
 
 #dashboard a:hover
-{background:#999;color:#fff;
+{color:#39c;
 text-decoration:none;}
 
 /* footer */

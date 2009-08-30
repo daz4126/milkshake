@@ -16,9 +16,11 @@ DataMapper.auto_upgrade!
 # App Settings
 SITENAME = "Milkshake"
 
+enable :sessions 
+
 helpers do
 def admin?
-  true
+  session[:admin]
 end
  
 def authorise

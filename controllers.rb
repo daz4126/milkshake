@@ -10,7 +10,23 @@ get '/' do
   end    
 end
 
-#admin dashboard/indedx
+#admin login
+get '/login' do
+  erb :login
+end
+
+post '/login' do
+  session[:admin] = true
+  redirect '/pages'
+end
+
+#admin logout
+get '/logout' do
+  session[:admin] = false
+  redirect '/pages'
+end
+
+#admin dashboard/index
 get '/pages' do
   @pages = admin? ? Page.roots: Page.roots.published
   erb :index
