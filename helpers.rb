@@ -1,50 +1,6 @@
 helpers do
-
-def page_title
-  if @title
-    SITENAME + " * " + @title
-  elsif @page
-    SITENAME + " * " + @page.title
-  else
-    SITENAME
-  end 
-end
-
 def link_to url,text
   "<a href='#{url}'>#{text}</a>"
-end
-
-def page_link page
-  "<a href=\"#{page.url}\" class=\"title\">#{page.title}</a>"
-end
-    
-def navmenu(pages=:roots,opts={})
-  pages = @page.respond_to?(pages.to_sym) ? @page.send(pages.to_sym) : Page.roots
-  output = "<ul>"
-  pages.each{ |page| output << "\n<li><a href=\"#{page.url}\">#{page.title}</a></li>"}
-  output << "\n</ul>"
-end 
-
-def shakedown(text)
-  # allows access to pages properties eg {= title }
-  text.gsub!(/(?:%\s*)(\w+)(?:\s*%)/) do |match|
-    if @page && @page.respond_to?($1.to_sym)
-      @page.send($1.to_sym).to_s
-    else
-      match
-    end
-  end
-  # allows access to helper methods eg %= navmenu
-  text.gsub!(/(?:%=\s*)(\w+)(?:\s*)(?:\(([\w,\,]+)\))?/) do |match|
-    if $1 && $2 && respond_to?($1.to_sym,$2)
-      send($1.to_sym,$2)
-    elsif $1 && respond_to?($1.to_sym)
-      send($1.to_sym)
-    else
-      match 
-    end
-  end
-  Maruku.new(text).to_html.gsub('h1>','h3>').gsub('h2>','h4>')
 end
 
 def render_partial(template,locals=nil)
@@ -65,6 +21,5 @@ def render_partial(template,locals=nil)
     erb(template,{:layout => false})
   end
 end
-  
-  
+ 
 end
