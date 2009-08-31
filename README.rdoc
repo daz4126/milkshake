@@ -1,0 +1,3 @@
+Milkshake is a very basic content management system for building websites quickly.
+
+It was written by DAZ and is released under an MIT License: www.opensource.org/licenses/mit-license.php 
