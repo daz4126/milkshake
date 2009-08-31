@@ -1,5 +1,6 @@
 /* general */
 body{font:62.5%/2 "Nimbus Sans L", helvetica,arial,sans-serif;color:#333;}
+#header h1{font-size:6em;font-family: "URW Gothic L","Century Gothic",Verdana,sans-serif;text-transform:lowercase;font-weight:bold;letter-spacing:-0.05em;line-height:1;margin:0;padding:0;color:#f78bf7;}
 
 /* pages */
 #pages{width:60%;border:#ccc solid 1px;border-top:none;}
