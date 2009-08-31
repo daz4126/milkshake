@@ -43,6 +43,9 @@ textarea{display:block;width:100%;font-size:2.4em;}
 select{font-size:2em;width:80%;}
 a.cancel,a:link.cancel,a:visited.cancel{color:#666}
 
+form#login{margin:3em 0;}
+form#login input{font-size:1.4em;}
+
 #page-info{float:right;width:30%;background:#39c;color:#fff;padding:1em 1%;}
 #page-info label{color:#fff;display:block;}
 #page-info a,#page-info a:link,#page-info a:visited{color:#fff;}

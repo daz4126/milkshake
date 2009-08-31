@@ -1,3 +1,5 @@
+require 'maruku'
+
 class Page
   include DataMapper::Resource
 # Properties
@@ -117,22 +119,6 @@ get '/' do
   else
     redirect '/pages'
   end    
-end
-
-#admin login
-get '/login' do
-  erb :login
-end
-
-post '/login' do
-  session[:admin] = true
-  redirect '/pages'
-end
-
-#admin logout
-get '/logout' do
-  session[:admin] = false
-  redirect '/pages'
 end
 
 #admin dashboard/index
