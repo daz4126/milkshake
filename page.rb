@@ -113,7 +113,7 @@ end
 
 # Show home page
 get '/' do
-  @page = Page.roots.published
+  @page = Page.roots.published.first
   if @page
     erb :show
   else
