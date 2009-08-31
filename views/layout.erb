@@ -9,14 +9,16 @@
 </style>
 </head>
 <body>
+<div id="header">
+<h1><%= SITE_NAME %></h1>
+<%= navmenu(:main,"tabs") %>
+</div>
 <%= render_partial :dashboard if admin? %>
 
 <%= yield %>
 
 <div id="footer">
 <p>Made with Milkshake.</p>
-<p><%= link_to "/pages","Sitemap" %></p>
-<p><%= link_to "/login","Log In" %></p>
-</div>
+<p><%= link_to "/pages","Sitemap" %> | <%= link_to "/login","Log In" %></p>
 </body>
 </html>

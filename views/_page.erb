@@ -1,5 +1,5 @@
 <li id="page_<%= page.id %>" class="page">
-<%= page_link page %>
+<%= link_to page.url,page.title %>
 <%= "<span class=\"draft\">DRAFT</span>" unless page.published? %>
 
 <% if admin? %>

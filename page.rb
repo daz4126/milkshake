@@ -204,21 +204,18 @@ end
 helpers do
 def page_title
   if @title
-    SITENAME + " * " + @title
+    SITE_NAME + " * " + @title
   elsif @page
-    SITENAME + " * " + @page.title
+    SITE_NAME + " * " + @page.title
   else
-    SITENAME
+    SITE_NAME
   end 
 end
-
-def page_link page
-  "<a href=\"#{page.url}\" class=\"title\">#{page.title}</a>"
-end
     
-def navmenu(pages=:roots,opts={})
-  pages = @page.respond_to?(pages.to_sym) ? @page.send(pages.to_sym) : Page.roots
-  output = "<ul>"
+def navmenu(pages=:roots,clas=nil)
+  pages = @page.respond_to?(pages.to_sym) ? @page.send(pages.to_sym) : Page.published.roots
+  output = "<ul"
+  clas ? output << " class=\"" + clas + "\">" : output << ">"
   pages.each{ |page| output << "\n<li><a href=\"#{page.url}\">#{page.title}</a></li>"}
   output << "\n</ul>"
 end 

@@ -13,7 +13,7 @@ require 'helpers'
 DataMapper.auto_upgrade!
 
 # App Settings
-SITENAME = "Milkshake"
+SITE_NAME = "Milkshake"
 
 enable :sessions 
 
