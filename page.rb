@@ -94,6 +94,13 @@ def permalink
   title.downcase.gsub(/\W/,'-').squeeze('-')
 end
 
+# Returns a summary of the page
+def summary
+  text = self.content[0,400]
+  text += " ... <a href=\"#{self.url}\">continue reading</a>" if self.content.length > 400
+  text
+end
+
 def url
   "/" + self.path
 end
