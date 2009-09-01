@@ -7,7 +7,9 @@ class Page
   property :title,        String,   :nullable => false, :default => "Title"
   property :path,         String,  :default => Proc.new { |r, p| r.permalink }
   property :content,      Text, :default => "Enter some content here"
-  property :published_on, DateTime, :default => nil
+  property :created_at, DateTime#, :default => Time.now
+  property :updated_at, DateTime
+  property :published_at, DateTime, :default => nil
   property :position,     Integer, :default => Proc.new { |r, p| r.siblings.empty? ?  1 : r.siblings.size.next }
   property :parent_id,    Integer, :default => nil
   property :show_title,   Boolean, :default => true
@@ -43,11 +45,20 @@ class Page
  
 # Some named_scopes
 def self.published
-  all(:published_on.not => nil)
+  all(:published_at.not => nil)
 end
 
 def self.roots
   all(:parent_id => nil)
+end
+
+def self.recent(number=1)
+  all(:order => [:created_at.desc], :limit => number)
+end
+
+def self.random(number=1)
+  #not currently working - now way to get random records in dm
+  #all(:order => ['RAND()'], :limit => number)
 end
 
 #returns the level of the page, 1 = root
@@ -94,12 +105,12 @@ end
 
 #test if a page is published or not
 def published?
-  true unless published_on.nil?
+  true unless published_at.nil?
 end
 
 #test if a page is a draft or not
 def draft?
-  published_on.nil?
+  published_at.nil?
 end
 
 #test if a page has children or not
@@ -140,13 +151,13 @@ get path do
 end
 end
 
-#update
+#update/create
 ['/page/:id', '/page/'].each do |path|
 put path do
   authorise
   @page = Page.get(params[:id]) || Page.new(params[:page])
   @page.show_title = false unless params[:show_title]
-  @page.published_on = params[:publish] ?  Time.now : nil
+  @page.published_at = params[:publish] ?  Time.now : nil
   if @page.update_attributes(params[:page])
     status 201
     redirect @page.url
