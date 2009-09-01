@@ -71,11 +71,11 @@ def root
 end
 
 def self_and_siblings
-  parent ? parent.children : Page.roots
+  Page.all(:parent_id => self.parent_id)
 end
 
 def siblings
-  self_and_siblings - [ self ]
+  Page.all(:parent_id => self.parent_id,:id.not => self.id)
 end
 
 # Returns a page's permalink based on its title
