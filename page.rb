@@ -199,8 +199,7 @@ def page_title
 end
     
 def navmenu(pages=:roots,clas=nil)
-  pages = pages.to_s + ".published"
-  pages = @page.respond_to?(pages.to_sym) ? @page.send(pages.to_sym) : Page.published.roots
+  pages = @page.respond_to?(pages.to_sym) ? @page.send(pages.to_sym).published : Page.published.roots
   output = "<ul"
   clas ? output << " class=\"" + clas + "\">" : output << ">"
   pages.each{ |page| output << "\n<li><a href=\"#{page.url}\">#{page.title}</a></li>"}
