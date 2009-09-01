@@ -208,6 +208,14 @@ def page_title
     SITE_NAME
   end 
 end
+
+def breadcrumbs(page=@page,separator=">>")
+  pages = page.ancestors.reverse + [page]
+  separator = " " + separator + " "
+  pages.inject("<div class=\"breadcrumbs\">") do |list,crumb|
+    list << "<a href=\"#{crumb.url}\">#{crumb.title}</a>" + separator
+  end.chomp(separator).concat("</div>")
+end
     
 def navmenu(pages=:roots,clas=nil)
   pages = @page.respond_to?(pages.to_sym) ? @page.send(pages.to_sym).published : Page.published.roots
