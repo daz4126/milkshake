@@ -11,7 +11,7 @@ require 'auth'
 require 'page'
 require 'helpers'
 
-DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
 
 # App Settings
 SITE_NAME = "Milkshake"
