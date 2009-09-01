@@ -13,8 +13,8 @@
 
 <fieldset id="page-info">
 <legend>Page Info</legend>
-<p><%= @page.created_at.strftime("Created on %d %B %Y") %></p>
-<p><%= @page.updated_at.strftime("Last updated at %I:%M%p on %d %B %Y") %></p>
+<p><%= @page.created_at.strftime("Created on %d %B %Y") if @page.created_at %></p>
+<p><%= @page.updated_at.strftime("Last updated at %I:%M%p on %d %B %Y") if @page.updated_at %></p>
 <label for="parent_id">Section:</label>
 <select id="parent_id" name="page[parent_id]">
 <option value="">Main Section</option>
