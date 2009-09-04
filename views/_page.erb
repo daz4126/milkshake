@@ -5,7 +5,7 @@
 <% if admin? %>
 <div class="edit-buttons">
 <%= link_to "/page/#{page.id}","EDIT" %>
-<%= link_to "/new/page?parent=#{page.id}","+ PAGE" %>
+<%= link_to "/new/page?section=#{page.id}","+ PAGE" %>
 <%= link_to "/page/#{page.id}/delete","DELETE" %>
 </div>
 <% end %>

@@ -145,24 +145,43 @@ get '/pages' do
   erb :index
 end
 
-#edit
-['/page/:id', '/new/page'].each do |path|
-get path do
+#new
+get '/new/page' do
   authorise
-  @page = Page.get(params[:id]) || Page.new(:parent_id => params[:parent])
+  @page = Page.new(:parent_id => params[:section])
+  erb :new
+end
+
+#create
+post 'new/page' do
+  authorise
+  @page = Page.new(params[:page])
+  @page.show_title = false unless params[:show_title]
+  @page.published_at = params[:publish] ?  Time.now : nil
+  if @page.save
+    status 201
+    redirect @page.url
+  else
+    status 412
+    redirect '/pages'   
+  end
+end
+
+#edit
+get '/page/:id' do
+  authorise
+  @page = Page.get(params[:id])
   if @page
     erb :edit
   else
     redirect '/pages'
   end
 end
-end
 
-#update/create
-['/page/:id', '/page/'].each do |path|
-put path do
+#update
+put '/page/:id' do
   authorise
-  @page = Page.get(params[:id]) || Page.new(params[:page])
+  @page = Page.get(params[:id])
   @page.show_title = false unless params[:show_title]
   @page.published_at = params[:publish] ?  Time.now : nil
   if @page.update_attributes(params[:page])
@@ -172,7 +191,6 @@ put path do
     status 412
     redirect '/pages'   
   end
-end
 end
 
 # delete confirmation

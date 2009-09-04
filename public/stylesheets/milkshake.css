@@ -23,7 +23,7 @@ float:left;
 .edit-buttons a,.edit-buttons a:link,.edit-buttons a:visited
 {background:#fff;color:#999;
 margin:0 1em;padding:0.5em;text-indent:0;
-font-weight:bold;font-size:1.2em;text-decoration:none;
+font-weight:bold;font-size:1em;text-decoration:none;
 display:block;float:left;
 border:#6cf solid 1px;
 -webkit-border-radius:0.5em;-moz-border-radius:0.5em;border-radius:0.5em;}
