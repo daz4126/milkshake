@@ -153,7 +153,7 @@ get '/new/page' do
 end
 
 #create
-post 'new/page' do
+post '/new/page' do
   authorise
   @page = Page.new(params[:page])
   @page.show_title = false unless params[:show_title]
@@ -234,6 +234,10 @@ def page_title
   end 
 end
 
+def css(filename)
+"<link rel=\"stylesheet\" type=\"text/css\" media=\"screen, projection\" href=\"/stylesheets/#{filename.to_s}.css\" />"
+end
+
 def breadcrumbs(page=@page,separator=">>")
   pages = page.ancestors.reverse + [page]
   separator = " " + separator + " "
@@ -248,7 +252,20 @@ def navmenu(pages=:roots,clas=nil)
   clas ? output << " class=\"" + clas + "\">" : output << ">"
   pages.each{ |page| output << "\n<li><a href=\"#{page.url}\">#{page.title}</a></li>"}
   output << "\n</ul>"
-end 
+end
+
+def plonk(text)
+  text.gsub!(/(?:%\s*)(\w+)(?:\s*[(\r\n)%])/) do |match|
+    if @page && @page.respond_to?($1.to_sym)
+      @page.send($1.to_sym).to_s
+    else
+      match
+    end
+  end
+  text.gsub!(/(%)(=)?(\s*)(.+)(\s*[(\r\n)%])/,'<%\2 \4 %>')
+  text = erb(text,:layout => false)
+  Maruku.new(text).to_html
+end
 
 def shakedown(text)
   # allows access to pages properties eg {= title }
