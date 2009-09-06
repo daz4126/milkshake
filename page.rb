@@ -97,8 +97,6 @@ end
 # Returns a summary of the page
 def summary
   text = self.content[0,400]
-  text += " ... <a href=\"#{self.url}\">continue reading</a>" if self.content.length > 400
-  text
 end
 
 def url
@@ -211,8 +209,8 @@ end
 # show - should come last in order
 get '/*' do
   @page = Page.first(:path => params[:splat])
-  authorise if @page.draft?
   raise error(404) unless @page
+  authorise if @page.draft?
   erb :show
 end
 
@@ -220,7 +218,6 @@ end
 error 404 do
   erb :page_missing
 end
-
 
 
 helpers do
@@ -234,8 +231,16 @@ def page_title
   end 
 end
 
-def css(filename)
-"<link rel=\"stylesheet\" type=\"text/css\" media=\"screen, projection\" href=\"/stylesheets/#{filename.to_s}.css\" />"
+def css(*stylesheets)
+  stylesheets.inject([]) do |html,stylesheet|
+    html << "<link rel=\"stylesheet\" type=\"text/css\" media=\"screen, projection\" href=\"/stylesheets/#{stylesheet.to_s}.css\" />"
+   end.join("\n")
+end
+
+def js(*scripts)
+  scripts.inject([]) do |html,script|
+    html << "<script src=\"#{script}.js\" type=\"text/javascript\"></script>"
+   end.join("\n")
 end
 
 def breadcrumbs(page=@page,separator=">>")
@@ -245,16 +250,17 @@ def breadcrumbs(page=@page,separator=">>")
     list << "<a href=\"#{crumb.url}\">#{crumb.title}</a>" + separator
   end.chomp(separator).concat("</div>")
 end
-    
-def navmenu(pages=:roots,clas=nil)
+
+def list_of_links(pages=:roots,opts={})
   pages = @page.respond_to?(pages.to_sym) ? @page.send(pages.to_sym).published : Page.published.roots
-  output = "<ul"
-  clas ? output << " class=\"" + clas + "\">" : output << ">"
+  attributes = ""
+  opts.each { |key,value| attributes << key.to_s << "=\"" << value << "\" "}
+  output = "<ul #{attributes}>"
   pages.each{ |page| output << "\n<li><a href=\"#{page.url}\">#{page.title}</a></li>"}
   output << "\n</ul>"
 end
 
-def plonk(text)
+def shakedown(text)
   text.gsub!(/(?:%\s*)(\w+)(?:\s*[(\r\n)%])/) do |match|
     if @page && @page.respond_to?($1.to_sym)
       @page.send($1.to_sym).to_s
@@ -262,31 +268,9 @@ def plonk(text)
       match
     end
   end
-  text.gsub!(/(%)(=)?(\s*)(.+)(\s*[(\r\n)%])/,'<%\2 \4 %>')
+  text.gsub!(/(%)(=)?(\s*)(.*)(%)/,'<%\2 \4 %>')
   text = erb(text,:layout => false)
   Maruku.new(text).to_html
-end
-
-def shakedown(text)
-  # allows access to pages properties eg {= title }
-  text.gsub!(/(?:%\s*)(\w+)(?:\s*%)/) do |match|
-    if @page && @page.respond_to?($1.to_sym)
-      @page.send($1.to_sym).to_s
-    else
-      match
-    end
-  end
-  # allows access to helper methods eg %= navmenu
-  text.gsub!(/(?:%=\s*)(\w+)(?:\s*)(?:\(([\w,\,]+)\))?/) do |match|
-    if $1 && $2 && respond_to?($1.to_sym,$2)
-      send($1.to_sym,$2)
-    elsif $1 && respond_to?($1.to_sym)
-      send($1.to_sym)
-    else
-      match 
-    end
-  end
-  Maruku.new(text).to_html.gsub('h1>','h3>').gsub('h2>','h4>')
 end
  
 end

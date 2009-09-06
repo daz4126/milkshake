@@ -6,4 +6,4 @@
 <h1><%= @page.title %></h1>
 <% end %>
 
-<%= shakedown(@page.content) %>
+<%= shakedown(@page.content).gsub('h1>','h3>').gsub('h2>','h4>') %>
