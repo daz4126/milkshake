@@ -7,6 +7,7 @@ require 'dm-timestamps'
 # Database connection
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/test.db")
 
+$LOAD_PATH.unshift(File.dirname(__FILE__) + "/lib")
 require 'auth'
 require 'page'
 require 'helpers'
