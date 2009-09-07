@@ -1,4 +1,4 @@
-<h2><%= page_link @page %><h2>
+<h2><%= @page.title %><h2>
 <h3>Are you sure you want to delete this page?<h3>
 <form action="/page/<%= @page.id %>" method="post">
 <input type="hidden" name="_method" value="delete" />
