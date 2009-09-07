@@ -7,7 +7,7 @@
 
 <% if admin? %>
 <%= link_to "/page/#{@page.id}","[Edit this Page]" %>
-<%= link_to "/page/#{@page.id}?section=#{@page.parent_id}","[+ Sibling Page]" %>
-<%= link_to "/page/#{@page.id}?section=#{@page.id}","[+ Child Page]" %>
+<%= link_to "/new/page/#{@page.id}?section=#{@page.parent_id}","[+ Sibling Page]" %>
+<%= link_to "/new/page/#{@page.id}?section=#{@page.id}","[+ Child Page]" %>
 <%= link_to "/page/#{@page.id}/delete","[Delete this Page]" %>
 <% end %>

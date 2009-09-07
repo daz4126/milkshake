@@ -11,10 +11,10 @@
 <body>
 <div id="header">
 <h1><%= SITE_NAME %></h1>
-<%= list_of_links(:roots,{:class=>"tabs"}) %>
+<%= list_of_links(:roots,:class=>"tabs") %>
 <%= breadcrumbs if @page %>
 </div>
-<%= render_partial :dashboard if admin? %>
+<%= erb(:dashboard,:layout => false) if admin? %>
 
 <%= yield %>
 
