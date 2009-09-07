@@ -12,7 +12,12 @@
 
 <% unless page.children.empty? %>
 <ul class="pages">
-<%= admin? ? render_partial(page.children) : render_partial(page.children.published) %>
+<% admin? ? children = page.children : children = page.children.published %>
+
+<% children.each do |child| %>
+<%= erb(:_page,{:layout=>false},{:page=>child}) %>
+<% end %>
+
 </ul>
 <% end %>
 </li>

@@ -18,3 +18,10 @@ DataMapper.auto_upgrade!
 SITE_NAME = "Milkshake"
 USER_NAME = "admin"
 PASSWORD  = "vanilla"
+
+# Helpers
+helpers do
+def link_to url,text
+  "<a href='#{url}'>#{text}</a>"
+end
+end

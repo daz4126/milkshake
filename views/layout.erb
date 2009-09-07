@@ -14,7 +14,7 @@
 <%= list_of_links(:roots,:class=>"tabs") %>
 <%= breadcrumbs if @page %>
 </div>
-<%= erb(:dashboard,:layout => false) if admin? %>
+<%= erb(:_dashboard,:layout=>false) if admin? %>
 
 <%= yield %>
 
