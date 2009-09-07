@@ -7,7 +7,7 @@
 
 <% if admin? %>
 <%= link_to @page.edit_url,"[Edit this Page]" %>
-<%= link_to @page.new_child_url,"[+ Sibling Page]" %>
+<%= link_to @page.new_sibling_url,"[+ Sibling Page]" %>
 <%= link_to @page.new_child_url,"[+ Child Page]" %>
 <%= link_to @page.delete_url,"[Delete this Page]" %>
 <% end %>

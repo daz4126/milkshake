@@ -99,8 +99,29 @@ def summary
   text = self.content[0,400]
 end
 
+#useful urls for the page
 def url
   "/" + self.path
+end
+
+def edit_url
+  "/page/" + self.id.to_s
+end
+
+def delete_url
+  "/page/#{self.id}/delete"
+end
+
+def new_url
+  "/new/page"
+end
+
+def new_child_url
+  "/new/page?section=" + self.id.to_s
+end
+
+def new_sibling_url
+  "/new/page?section=" + self.parent_id.to_s
 end
 
 #test if a page is a root page
