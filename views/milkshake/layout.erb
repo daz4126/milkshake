@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title><%= page_title %></title>
+<meta charset=utf-8 />
+<%= css :milkshake %>
+<style>
+
+</style>
+</head>
+<body>
+<div id="header">
+<h1><%= SITE_NAME %></h1>
+<%= list_of_links(:roots,:class=>"tabs") %>
+<%= breadcrumbs if @page %>
+</div>
+<%= erb(:'milkshake/_dashboard',:layout=>false) if admin? %>
+
+<%= yield %>
+
+<div id="footer">
+<p>Made with Milkshake.</p>
+<p><%= link_to "/pages","Sitemap" %> | <%= link_to "/login","Log In" %></p>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<fieldset>
+<legend>Page Content</legend>
+<label for="title" class="hidden">Title</label>
+<input type="text" name="page[title]" id="title" value="<%= @page.title %>">
+<input type="checkbox" name="show_title" id="show_title" value="true" <%= "checked" if @page.show_title %>>
+<label for="show_title">show/hide title</label>
+<label for="content" class="hidden">Content</label>
+<textarea rows="16" cols="80" name="page[content]" id="content"><%= @page.content %></textarea>
+</fieldset>
+
+
+<fieldset id="page-info">
+<legend>Page Info</legend>
+<p><%= @page.created_at ? @page.created_at.strftime("Created on %d %B %Y") : "This page hasn't been created yet."  %></p>
+<p><%= @page.updated_at ?  @page.updated_at.strftime("Last updated at %I:%M%p on %d %B %Y") : "This page hasn't been updated yet."  %></p>
+<label for="parent_id">Section:</label>
+<select id="parent_id" name="page[parent_id]">
+<option value="">Main Section</option>
+<% (Page.all - [@page]).each do |parent| %>
+<option value="<%= parent.id %>" <%= "selected=\"selected\"" if @page.parent_id == parent.id %> >
+<%= parent.title %>
+</option>
+<% end %>
+</select>
+<label for="position">Position:</label>
+<select id="position" name="page[position]">
+<% 1.upto(@page.self_and_siblings.size.next) do |position| %>
+<option value="<%= position %>" <%= "selected=\"selected\"" if position == @page.position %> >
+<%= position.to_s %>
+</option>
+<% end %>
+</select>
+<div>
+<label for="publish">Publish:</label>
+<input type="checkbox" name="publish" id="publish" value="true" <%= "checked" if @page.published? %>/>
+</div>
+<input type="submit" value="Save" class="submit-button">
+ or <a href="/pages" class="cancel">cancel</a>
+</fieldset>
+
+</form>
