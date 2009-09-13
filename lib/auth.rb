@@ -2,7 +2,7 @@ enable :sessions
 
 #admin login page
 get '/login' do
-  erb :login
+  erb :'milkshake/login',:layout=>:'milkshake/layout'
 end
 
 post '/login' do

@@ -91,7 +91,7 @@ end
 
 # Returns a page's permalink based on its title
 def slug
-  title.downcase.gsub(/\W/,'-').squeeze('-')
+  title.downcase.gsub(/\W/,'-').squeeze('-').chomp('-')
 end
 
 # Returns a summary of the page

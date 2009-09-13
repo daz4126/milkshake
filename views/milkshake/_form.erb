@@ -5,15 +5,13 @@
 <input type="checkbox" name="show_title" id="show_title" value="true" <%= "checked" if @page.show_title %>>
 <label for="show_title">show/hide title</label>
 <label for="content" class="hidden">Content</label>
-<textarea rows="16" cols="80" name="page[content]" id="content"><%= @page.content %></textarea>
+<textarea rows="28" cols="80" name="page[content]" id="content"><%= @page.content %></textarea>
 </fieldset>
 
 
 <fieldset id="page-info">
 <legend>Page Info</legend>
-<p><%= @page.created_at ? @page.created_at.strftime("Created on %d %B %Y") : "This page hasn't been created yet."  %></p>
-<p><%= @page.updated_at ?  @page.updated_at.strftime("Last updated at %I:%M%p on %d %B %Y") : "This page hasn't been updated yet."  %></p>
-<label for="parent_id">Section:</label>
+<label for="parent_id">Section:
 <select id="parent_id" name="page[parent_id]">
 <option value="">Main Section</option>
 <% (Page.all - [@page]).each do |parent| %>
@@ -21,21 +19,21 @@
 <%= parent.title %>
 </option>
 <% end %>
-</select>
-<label for="position">Position:</label>
+</select></label>
+<label for="position">Position:
 <select id="position" name="page[position]">
 <% 1.upto(@page.self_and_siblings.size.next) do |position| %>
 <option value="<%= position %>" <%= "selected=\"selected\"" if position == @page.position %> >
 <%= position.to_s %>
 </option>
 <% end %>
-</select>
-<div>
-<label for="publish">Publish:</label>
-<input type="checkbox" name="publish" id="publish" value="true" <%= "checked" if @page.published? %>/>
-</div>
+</select></label>
+<label for="publish">Check box to publish this page
+<input type="checkbox" name="publish" id="publish" value="true" <%= "checked" if @page.published? %>/></label>
 <input type="submit" value="Save" class="submit-button">
  or <a href="/pages" class="cancel">cancel</a>
+ <p><%= @page.created_at ? @page.created_at.strftime("Created on %d %B %Y") : "This page hasn't been created yet."  %></p>
+<p><%= @page.updated_at ?  @page.updated_at.strftime("Last updated at %I:%M%p on %d %B %Y") : "This page hasn't been updated yet."  %></p>
 </fieldset>
 
 </form>

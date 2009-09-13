@@ -1,9 +1,9 @@
 <li id="page_<%= page.id %>" class="page">
+<%=  page.published? ? "<span class=\"status\">#{page.updated_at.strftime("%d %b %y")}</span>" : "<span class=\"status\">DRAFT</span>" %>
 <%= link_to page.path,page.title %>
-<%= "<span class=\"draft\">DRAFT</span>" unless page.published? %>
 
 <% if admin? %>
-<div class="edit-buttons">
+<div class="buttons">
 <%= link_to page.edit_path,"EDIT" %>
 <%= link_to page.new_child_path,"+ PAGE" %>
 <%= link_to page.delete_path,"DELETE" %>
@@ -11,7 +11,7 @@
 <% end %>
 
 <% unless page.children.empty? %>
-<ul class="pages">
+<ul>
 <% admin? ? children = page.children : children = page.children.published %>
 
 <% children.each do |child| %>
