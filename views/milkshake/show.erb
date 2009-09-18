@@ -6,8 +6,10 @@
 
 
 <% if admin? %>
-<%= link_to @page.edit_path,"[Edit this Page]" %>
-<%= link_to @page.new_sibling_path,"[+ Sibling Page]" %>
-<%= link_to @page.new_child_path,"[+ Child Page]" %>
-<%= link_to @page.delete_path,"[Delete this Page]" %>
+<ul class="buttons">
+<li><%= link_to @page.edit_path,"Edit" %></li>
+<li><%= link_to @page.new_sibling_path,"+ Sibling" %></li>
+<li><%= link_to @page.new_child_path,"+ Child" %></li>
+<li><%= link_to @page.delete_path,"Delete" %></li>
+</ul>
 <% end %>

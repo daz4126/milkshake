@@ -22,18 +22,19 @@
 </select></label>
 <label for="position">Position:
 <select id="position" name="page[position]">
-<% 1.upto(@page.self_and_siblings.size.next) do |position| %>
+<% 1.upto(@page.self_and_siblings.size) do |position| %>
 <option value="<%= position %>" <%= "selected=\"selected\"" if position == @page.position %> >
 <%= position.to_s %>
 </option>
 <% end %>
 </select></label>
-<label for="publish">Check box to publish this page
+<label for="publish">Publish this page:
 <input type="checkbox" name="publish" id="publish" value="true" <%= "checked" if @page.published? %>/></label>
-<input type="submit" value="Save" class="submit-button">
+
+<input type="submit" value="Save" class="button">
  or <a href="/pages" class="cancel">cancel</a>
- <p><%= @page.created_at ? @page.created_at.strftime("Created on %d %B %Y") : "This page hasn't been created yet."  %></p>
-<p><%= @page.updated_at ?  @page.updated_at.strftime("Last updated at %I:%M%p on %d %B %Y") : "This page hasn't been updated yet."  %></p>
+ 
+ <%= @page.updated_at.strftime("<p>Last updated at %I:%M%p on %d %B %Y</p>") if @page.updated_at  %>
 </fieldset>
 
 </form>

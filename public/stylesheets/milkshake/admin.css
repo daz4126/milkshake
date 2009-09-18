@@ -1,3 +1,20 @@
+.buttons{overflow:hidden;list-style:none; solid;margin:0;padding:0;
+zoom:1;display:relative;width:auto;}
+.buttons li{float:left;margin-right:10px;}
+.buttons a,.buttons a:link,.buttons a:visited,input.button
+{background:#6cf url(images/button.png) 0 50% repeat-x;color:#fff;
+display:inline-block;
+padding:6px 8px;margin:0;
+font-weight:bold;font-size:14px;text-decoration:none;
+-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;border:none;
+}
+.buttons a:hover,input.button:hover
+{background:#9cf url(images/button.png) 0 50% repeat-x;color:#fff;
+text-decoration:none;}
+
+
+
+
 /* general */
 body{font-family:arial,sans-serif;color:#333;}
 
@@ -21,13 +38,11 @@ float:left;
 .pages li ul{margin:0;padding:0;
 clear:both;width:100%;}
 
-.pages li ul li{pxadding-left:20px;}
-
 .pages .buttons{overflow:hidden;float:right;margin-bottom:5px;}
 .pages .buttons a,.edit-buttons a:link,.edit-buttons a:visited
 {background:#fff;color:#6cf;
 border:#9ff solid 1px;
-margin:0 10px;padding:5px;text-indent:0;
+margin:0 5px;padding:5px;text-indent:0;
 font-weight:bold;font-size:10px;text-decoration:none;
 display:block;float:left;
 -webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
@@ -39,17 +54,17 @@ legend{display:none;}
 fieldset{margin:0;padding:0;width:66%;float:left;border:none;}
 #title{width:70%;}
 input{font-size:20px;}
-input.submit-button{font-size:20px;}
 label{font-size:12px;color:#999;font-weight:bold;}
 label.hidden{display:none;}
 textarea{display:block;width:100%;font-size:14px;}
 select{font-size:14px;width:auto;}
 a.cancel,a:link.cancel,a:visited.cancel{color:#666}
 
-fieldset#page-info{float:right;width:30%;background:#39c;color:#fff;padding:10px 1%;
+fieldset#page-info{float:right;width:30%;background:#39c;color:#fff;padding:10px 1%;font-size:12px;
 -webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
-#page-info label{color:#fff;display:block;margin:6px 0;}
-#page-info a,#page-info a:link,#page-info a:visited{color:#fff;}
+fieldset#page-info label{color:#fff;display:block;margin:6px 0;}
+fieldset#page-info a,#page-info a:link,#page-info a:visited{color:#fff;}
+fieldset#page-info p{font-size:10px;margin:0;float:right;}
 
 form#login{margin:30px 0;}
 form#login input{font-size:14px;}
@@ -57,21 +72,7 @@ form#login input{font-size:14px;}
 /* dashboard */
 #dashboard
 {background:#666;color:#ccc;
-margin-bottom:40px;padding:20px 10px;
+margin-bottom:40px;padding:10px;
 overflow:hidden;}
 
-#dashboard h2{float:left;margin:0 0 0 30px;padding:0;font-size:24px;color:#fff;}
-
-#dashboard .buttons{list-style:none;float:left;padding:0;margin:0;width:50px;}
-#dashboard .buttons li{float:left;clear:left;margin-bottom:10px;width:100%;}
-
-#dashboard a,#dashboard a:link
-{background:#fff;color:#4FC2F2;  
-padding:5px 10px;
-font-size:14px;text-decoration:none;font-weight:bold;
-float:left;display:block;width:100%;
--webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
-
-#dashboard a:hover
-{background:#4FC2F2;color:#fff;
-text-decoration:none;}
+#dashboard h2{margin:0 0 10px 0;padding:0;font-size:24px;color:#fff;}
