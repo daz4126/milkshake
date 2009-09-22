@@ -223,6 +223,7 @@ end
 delete '/page/:id' do
   authorise
   @page = Page.get!(params[:id])
+  @page.children.destroy! if @page.children
   @page.destroy
   redirect '/pages'  
 end

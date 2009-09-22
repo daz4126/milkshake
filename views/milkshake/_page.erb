@@ -1,9 +1,9 @@
 <li id="page_<%= page.id %>" class="page">
-<%=  page.published? ? "<span class=\"status\">#{page.updated_at.strftime("%d %b %y")}</span>" : "<span class=\"status\">DRAFT</span>" %>
+<span class="milkshake-page-status"><%=  page.published? ? page.updated_at.strftime("%d %b %y") : "DRAFT" %></span>
 <%= link_to page.path,page.title %>
 
 <% if admin? %>
-<div class="buttons">
+<div class="milkshake-buttons">
 <%= link_to page.edit_path,"EDIT" %>
 <%= link_to page.new_child_path,"+ PAGE" %>
 <%= link_to page.delete_path,"DELETE" %>

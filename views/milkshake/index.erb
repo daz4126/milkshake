@@ -1,6 +1,6 @@
 <h1>Pages</h1>
 <% if @pages %>
-<ul id="pages" class="pages">
+<ul id="pages" class="milkshake-pages">
 
 <% @pages.each do |page| %>
 <%= erb(:'milkshake/_page',{:layout=>false},{:page=>page}) %>

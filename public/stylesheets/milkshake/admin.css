@@ -1,78 +1,78 @@
-.buttons{overflow:hidden;list-style:none; solid;margin:0;padding:0;
+/* general */
+body{font-family:arial,sans-serif;color:#333;}
+
+/* buttons */
+.milkshake-buttons{overflow:hidden;list-style:none; solid;margin:0;padding:0;
 zoom:1;display:relative;width:auto;}
-.buttons li{float:left;margin-right:10px;}
-.buttons a,.buttons a:link,.buttons a:visited,input.button
-{background:#6cf url(images/button.png) 0 50% repeat-x;color:#fff;
+.milkshake-buttons li{float:left;margin-right:10px;}
+.milkshake-buttons a,.milkshake-buttons a:link,.milkshake-buttons a:visited,input.milkshake-button
+{background:#fcf url(images/button.png) 0 50% repeat-x;color:#c79d74;
 display:inline-block;
 padding:6px 8px;margin:0;
 font-weight:bold;font-size:14px;text-decoration:none;
 -webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;border:none;
 }
-.buttons a:hover,input.button:hover
-{background:#9cf url(images/button.png) 0 50% repeat-x;color:#fff;
+.milkshake-buttons a:hover,input.milkshake-button:hover
+{background:#f9c url(images/button.png) 0 50% repeat-x;color:#fff;
 text-decoration:none;}
 
-
-
-
-/* general */
-body{font-family:arial,sans-serif;color:#333;}
-
 /* pages */
-.pages{border:#66b6da solid 1px;border-top:none;background:#e3f1ff;list-style:none;margin:0;padding:0;width:600px;}
+.milkshake-pages{border:#c79d74 solid 1px;border-top:none;background:#ff9;list-style:none;margin:0;padding:0;width:600px;}
 
-.pages ul{border-left:#66b6da solid 1px;}
+.milkshake-pages ul{border-left:#c79d74 solid 1px;}
 
-.pages li{list-style:none;border-top:#66b6da solid 1px;margin:0;padding:5px 0 0 10px;line-height:1;clear:both;overflow:hidden;}
+.milkshake-pages li{list-style:none;border-top:#c79d74 solid 1px;margin:0;padding:5px 0 0 10px;line-height:1;clear:both;overflow:hidden;}
 
-.pages li ul{margin:0;padding:0;
+.milkshake-pages li ul{margin:0;padding:0;
 clear:both;width:100%;}
 
-.pages a{font-size:18px;float:left;}
-.pages a,.pages a:link,.pages a:visited{color:#39c;text-decoration:none;}
-.pages a:hover{text-decoration:underline;}
+.milkshake-pages a{font-size:18px;float:left;}
+.milkshake-pages a,.milkshake-pages a:link,.milkshake-pages a:visited{color:#f9c;text-decoration:none;}
+.milkshake-pages a:hover{text-decoration:underline;}
 
-.status{background:#9cf;color:#fff;
+.milkshake-page-status{background:#fcf;color:#c79d74;
 text-transform:uppercase;font-size:9px;
 margin:0 5px;padding:5px;
 float:left;
 -webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
 
-.pages .buttons{overflow:hidden;float:right;margin-bottom:5px;}
-.pages .buttons a,.edit-buttons a:link,.edit-buttons a:visited
-{background:#fff;color:#6cf;
-border:#9ff solid 1px;
+.milkshake-pages .milkshake-buttons{overflow:hidden;float:right;margin-bottom:5px;}
+.milkshake-pages .milkshake-buttons a,.milkshake-pages .milkshake-buttons a:link,.milkshake-pages .milkshake-buttons a:visited
+{border:#f9c solid 1px;color:#c79d74;
 margin:0 5px;padding:5px;
-font-weight:bold;font-size:10px;text-decoration:none;
-display:block;float:left;
+font-size:10px;text-decoration:none;
 -webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
-.pages .buttons a:hover{background:#6Cf;color:#fff;
-text-decoration:none;}
+.milkshake-pages .milkshake-buttons a:hover{text-decoration:none;color:#fff;}
 
 /* forms */
-legend{display:none;}
-fieldset{margin:0;padding:0;width:66%;float:left;border:none;}
-#title{width:70%;}
-input{font-size:20px;}
-label{font-size:12px;color:#999;font-weight:bold;}
-label.hidden{display:none;}
-textarea{display:block;width:100%;font-size:14px;}
-select{font-size:14px;width:auto;}
-a.cancel,a:link.cancel,a:visited.cancel{color:#666}
+form.milkshake legend{display:none;}
+form.milkshake fieldset{margin:0;padding:0;width:66%;float:left;border:none;}
+form.milkshake #title{width:70%;}
+form.milkshake input,form.milkshake textarea
+{padding:3px;border:#ff9 solid 1px;
+webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
+form.milkshake input:focus,form.milkshake textarea:focus
+{border:#f9c solid 1px;}
+form.milkshake input{font-size:20px;}
+form.milkshake label{font-size:12px;color:#999;font-weight:bold;}
+form.milkshake label.hidden{display:none;}
+form.milkshake textarea{display:block;width:100%;font-size:14px;margin-top:10px;}
+form.milkshake select{font-size:14px;width:auto;}
+form.milkshake a.cancel,form.milkshake a:link.cancel,form.milkshake a:visited.cancel{color:#666}
 
-fieldset#page-info{float:right;width:30%;background:#e3f1ff;color:#0896d5;padding:10px 1%;font-size:12px;
+form.milkshake fieldset#page-info{float:right;width:30%;background:#ff9;color:#c79d74;padding:10px 1%;font-size:12px;
 -webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
-fieldset#page-info label{color:#0896d5;display:block;margin:6px 0;}
-fieldset#page-info a,#page-info a:link,#page-info a:visited{color:#0896d5;}
-fieldset#page-info p{font-size:10px;margin:0;float:right;}
+form.milkshake fieldset#page-info label{color:#c79d74;display:block;margin:6px 0;}
+form.milkshake fieldset#page-info a,#page-info a:link,#page-info a:visited{color:#c79d74;}
+form.milkshake fieldset#page-info p{font-size:10px;margin:0;float:right;}
 
-form#login{margin:30px 0;}
-form#login input{font-size:14px;}
+form.milkshake-login{margin:30px 0;}
+form.milkshake-login input{font-size:14px;}
 
 /* dashboard */
-#dashboard
-{background:#e3f1ff;color:#ccc;
+#milkshake-dashboard
+{background:#ff9;color:#f9c;
 margin-bottom:40px;padding:10px;
 overflow:hidden;}
 
-#dashboard h2{margin:0 0 10px 0;padding:0;font-size:24px;color:#0896d5;}
+#milkshake-dashboard h2{margin:0 0 10px 0;padding:0;font-size:24px;}

@@ -1,4 +1,4 @@
-<fieldset>
+<fieldset id="page-content">
 <legend>Page Content</legend>
 <label for="title" class="hidden">Title</label>
 <input type="text" name="page[title]" id="title" value="<%= @page.title %>">
@@ -22,7 +22,7 @@
 </select></label>
 <label for="position">Position:
 <select id="position" name="page[position]">
-<% 1.upto(@page.self_and_siblings.size) do |position| %>
+<% 1.upto(@page.siblings.size.next) do |position| %>
 <option value="<%= position %>" <%= "selected=\"selected\"" if position == @page.position %> >
 <%= position.to_s %>
 </option>
