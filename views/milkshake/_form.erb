@@ -31,7 +31,7 @@
 <label for="publish">Publish this page:
 <input type="checkbox" name="publish" id="publish" value="true" <%= "checked" if @page.published? %>/></label>
 
-<input type="submit" value="Save" class="button">
+<input type="submit" value="Save" class="milkshake-button">
  or <a href="/pages" class="cancel">cancel</a>
  
  <%= @page.updated_at.strftime("<p>Last updated at %I:%M%p on %d %B %Y</p>") if @page.updated_at  %>

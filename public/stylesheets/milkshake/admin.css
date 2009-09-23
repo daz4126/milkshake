@@ -1,47 +1,32 @@
 /* general */
 body{font-family:arial,sans-serif;color:#333;}
 
-/* buttons */
-.milkshake-buttons{overflow:hidden;list-style:none; solid;margin:0;padding:0;
-zoom:1;display:relative;width:auto;}
-.milkshake-buttons li{float:left;margin-right:10px;}
-.milkshake-buttons a,.milkshake-buttons a:link,.milkshake-buttons a:visited,input.milkshake-button
-{background:#fcf url(images/button.png) 0 50% repeat-x;color:#c79d74;
-display:inline-block;
-padding:6px 8px;margin:0;
-font-weight:bold;font-size:14px;text-decoration:none;
--webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;border:none;
-}
-.milkshake-buttons a:hover,input.milkshake-button:hover
-{background:#f9c url(images/button.png) 0 50% repeat-x;color:#fff;
-text-decoration:none;}
-
 /* pages */
-.milkshake-pages{border:#c79d74 solid 1px;border-top:none;background:#ff9;list-style:none;margin:0;padding:0;width:600px;}
+.milkshake-pages{border:#cbcbcb solid 1px;border-top:none;background:#ededed;list-style:none;margin:0;padding:0;width:600px;}
 
-.milkshake-pages ul{border-left:#c79d74 solid 1px;}
+.milkshake-pages ul{border-left:#cbcbcb solid 1px;}
 
-.milkshake-pages li{list-style:none;border-top:#c79d74 solid 1px;margin:0;padding:5px 0 0 10px;line-height:1;clear:both;overflow:hidden;}
+.milkshake-pages li{list-style:none;border-top:#cbcbcb solid 1px;margin:0;padding:5px 0 0 10px;line-height:1;clear:both;overflow:hidden;}
 
 .milkshake-pages li ul{margin:0;padding:0;
 clear:both;width:100%;}
 
 .milkshake-pages a{font-size:18px;float:left;}
-.milkshake-pages a,.milkshake-pages a:link,.milkshake-pages a:visited{color:#f9c;text-decoration:none;}
+.milkshake-pages a,.milkshake-pages a:link,.milkshake-pages a:visited{color:#2b98d6;text-decoration:none;}
 .milkshake-pages a:hover{text-decoration:underline;}
 
-.milkshake-page-status{background:#fcf;color:#c79d74;
+.milkshake-page-status{background:#b2b2b2;color:#fff;
 text-transform:uppercase;font-size:9px;
 margin:0 5px;padding:5px;
-float:left;
+float:left;edf2f7
 -webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
 
 .milkshake-pages .milkshake-buttons{overflow:hidden;float:right;margin-bottom:5px;}
 .milkshake-pages .milkshake-buttons a,.milkshake-pages .milkshake-buttons a:link,.milkshake-pages .milkshake-buttons a:visited
-{border:#f9c solid 1px;color:#c79d74;
+{border:#c8c8c8 solid 1px;
+color:#6a6c74;
 margin:0 5px;padding:5px;
-font-size:10px;text-decoration:none;
--webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
+font-size:10px;text-decoration:none;}
 .milkshake-pages .milkshake-buttons a:hover{text-decoration:none;color:#fff;}
 
 /* forms */
@@ -49,10 +34,10 @@ form.milkshake legend{display:none;}
 form.milkshake fieldset{margin:0;padding:0;width:66%;float:left;border:none;}
 form.milkshake #title{width:70%;}
 form.milkshake input,form.milkshake textarea
-{padding:3px;border:#ff9 solid 1px;
+{padding:3px;border:#cbcbcb solid 1px;
 webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
 form.milkshake input:focus,form.milkshake textarea:focus
-{border:#f9c solid 1px;}
+{background:#edf2f7;border:#2b98d6 solid 2px;}
 form.milkshake input{font-size:20px;}
 form.milkshake label{font-size:12px;color:#999;font-weight:bold;}
 form.milkshake label.hidden{display:none;}
@@ -60,10 +45,10 @@ form.milkshake textarea{display:block;width:100%;font-size:14px;margin-top:10px;
 form.milkshake select{font-size:14px;width:auto;}
 form.milkshake a.cancel,form.milkshake a:link.cancel,form.milkshake a:visited.cancel{color:#666}
 
-form.milkshake fieldset#page-info{float:right;width:30%;background:#ff9;color:#c79d74;padding:10px 1%;font-size:12px;
+form.milkshake fieldset#page-info{float:right;width:30%;background:#edf2f7;color:#454545;padding:10px 1%;font-size:12px;
 -webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
-form.milkshake fieldset#page-info label{color:#c79d74;display:block;margin:6px 0;}
-form.milkshake fieldset#page-info a,#page-info a:link,#page-info a:visited{color:#c79d74;}
+form.milkshake fieldset#page-info label{color:#454545;display:block;margin:6px 0;}
+form.milkshake fieldset#page-info a,#page-info a:link,#page-info a:visited{color:#454545;}
 form.milkshake fieldset#page-info p{font-size:10px;margin:0;float:right;}
 
 form.milkshake-login{margin:30px 0;}
@@ -71,8 +56,23 @@ form.milkshake-login input{font-size:14px;}
 
 /* dashboard */
 #milkshake-dashboard
-{background:#ff9;color:#f9c;
+{background:#565656;color:#fff;
 margin-bottom:40px;padding:10px;
 overflow:hidden;}
 
 #milkshake-dashboard h2{margin:0 0 10px 0;padding:0;font-size:24px;}
+
+/* buttons */
+.milkshake-buttons{overflow:hidden;list-style:none; solid;margin:0;padding:0;
+zoom:1;display:relative;width:auto;}
+.milkshake-buttons li{float:left;margin-right:10px;}
+.milkshake-buttons a,.milkshake-buttons a:link,.milkshake-buttons a:visited,input.milkshake-button
+{background:#d3d7da url(images/button.png) 0 50% repeat-x;color:#6a6c74;
+display:inline-block;
+padding:6px 8px;margin:0;
+font-weight:bold;font-size:14px;text-decoration:none;
+-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;border:none;
+}
+.milkshake-buttons a:hover,input.milkshake-button:hover
+{background:#006ba3 url(images/button.png) 0 50% repeat-x;color:#fff;
+text-decoration:none;}
