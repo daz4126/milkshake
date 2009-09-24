@@ -11,7 +11,7 @@ $LOAD_PATH.unshift(File.dirname(__FILE__) + "/lib")
 require 'auth'
 require 'page'
 
-DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
 
 # App Settings
 SITE_NAME = "Milkshake"
