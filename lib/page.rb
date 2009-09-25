@@ -232,7 +232,7 @@ end
 get '/*' do
   @page = Page.first(:permalink => params[:splat])
   raise error(404) unless @page
-  authorise if @page.draft?
+  protected! if @page.draft?
   erb :'milkshake/show',:layout=>:'milkshake/layout'
 end
 
