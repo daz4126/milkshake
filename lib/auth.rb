@@ -23,7 +23,7 @@ def admin?
   session[:user]
 end
  
-def authorise
+def protected!
   stop [ 401, 'You do not have permission to see this page.' ] unless admin?
 end
 end

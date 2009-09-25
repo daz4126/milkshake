@@ -2,7 +2,7 @@
 body{font-family:arial,sans-serif;color:#333;}
 
 /* pages */
-.milkshake-pages{border:#cbcbcb solid 1px;border-top:none;background:#ededed;list-style:none;margin:0;padding:0;width:600px;}
+.milkshake-pages{border:#cbcbcb solid 1px;xborder-top:none;background:#ededed;list-style:none;margin:0;padding:0;width:600px;}
 
 .milkshake-pages ul{border-left:#cbcbcb solid 1px;}
 
@@ -18,7 +18,7 @@ clear:both;width:100%;}
 .milkshake-page-status{background:#b2b2b2;color:#fff;
 text-transform:uppercase;font-size:9px;
 margin:0 5px;padding:5px;
-float:left;edf2f7
+float:left;edf2f7;
 -webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
 
 .milkshake-pages .milkshake-buttons{overflow:hidden;float:right;margin-bottom:5px;}
@@ -67,13 +67,14 @@ overflow:hidden;}
 .milkshake-buttons{overflow:hidden;list-style:none; solid;margin:0;padding:0;
 zoom:1;display:relative;width:auto;}
 .milkshake-buttons li{float:left;margin-right:10px;}
-.milkshake-buttons a,.milkshake-buttons a:link,.milkshake-buttons a:visited,input.milkshake-button
+.milkshake-buttons a,.milkshake-buttons a:link,.milkshake-buttons a:visited,.milkshake-button
 {background:#d3d7da url(images/button.png) 0 50% repeat-x;color:#6a6c74;
 display:inline-block;
 padding:6px 8px;margin:0;
 font-weight:bold;font-size:14px;text-decoration:none;
 -webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;border:none;
 }
-.milkshake-buttons a:hover,input.milkshake-button:hover
+a.milkshake-button{float:left;border:#c8c8c8 solid 1px;margin:5px 10px;}
+.milkshake-buttons a:hover,.milkshake-button:hover
 {background:#38a3d9 url(images/button.png) 0 50% repeat-x;color:#fff;
 text-decoration:none;}

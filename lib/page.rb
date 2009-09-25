@@ -166,14 +166,14 @@ end
 
 #new
 get '/new/page' do
-  authorise
+  protected!
   @page = Page.new(:parent_id => params[:section])
   erb :'milkshake/new',:layout=>:'milkshake/layout'
 end
 
 #create
 post '/new/page' do
-  authorise
+  protected!
   @page = Page.new(params[:page])
   @page.show_title = false unless params[:show_title]
   @page.published_at = params[:publish] ?  Time.now : nil
@@ -188,7 +188,7 @@ end
 
 #edit
 get '/page/:id' do
-  authorise
+  protected!
   @page = Page.get(params[:id])
   if @page
     erb :'milkshake/edit',:layout=>:'milkshake/layout'
@@ -199,7 +199,7 @@ end
 
 #update
 put '/page/:id' do
-  authorise
+  protected!
   @page = Page.get(params[:id])
   @page.show_title = false unless params[:show_title]
   @page.published_at = params[:publish] ?  Time.now : nil
@@ -214,14 +214,14 @@ end
 
 # delete confirmation
 get '/page/:id/delete' do
-  authorise
+  protected!
   @page = Page.get!(params[:id])
   erb :'milkshake/delete',:layout=>:'milkshake/layout'
 end
 
 # delete
 delete '/page/:id' do
-  authorise
+  protected!
   @page = Page.get!(params[:id])
   @page.children.destroy! if @page.children
   @page.destroy
