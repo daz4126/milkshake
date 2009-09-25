@@ -1,4 +1,4 @@
-require 'maruku'
+require 'rdiscount'
 
 class Page
   include DataMapper::Resource
@@ -290,9 +290,9 @@ def shakedown(text)
       match
     end
   end
-  text.gsub!(/(%)(=)?(\s*)(.*)(%)/,'<%\2 \4 %>')
+  #text.gsub!(/(%)(=)?(\s*)(.*)(%)/,'<%\2 \4 %>')
   text = erb(text,:layout => false)
-  Maruku.new(text).to_html
+  RDiscount.new(text).to_html
 end
  
 end

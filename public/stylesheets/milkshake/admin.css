@@ -56,7 +56,8 @@ form.milkshake-login input{font-size:14px;}
 
 /* dashboard */
 #milkshake-dashboard
-{background:#565656;color:#fff;
+{background:#565656 url(images/milkshake-logo.png) top right no-repeat;color:#fff;
+height:80px;
 margin-bottom:40px;padding:10px;
 overflow:hidden;}
 
