@@ -1,24 +1,24 @@
-Milkshake is an easy peasy content management system for building websites quickly.
+Milkshake is the easy peasy content management system built in Sinatra
 
-Usage
+## Usage
 ----------
-Set USERNAME & PASSWORD in main.rb
-default is USERNAME = admin,PASSWORD = vanilla
-Go to /login and enter the username and password
-Go to /pages
-Click on the + Page button at the top of the page to add a new top-level page.
-Each page in this list has three buttons attached:
-Edit - Allows you to edit the page (see below for details).
-+ Page - Add a page that will be a child of that page.
-Delete - Takes you to a confirmation page where you can delete that page and all its child pages.
-A page's url is automatically based on its structure, so a page called 'bart' with a parent called 'homer' would have the url /homer/bart
+* Set USERNAME & PASSWORD in main.rb
+* default is USERNAME = admin,PASSWORD = vanilla
+* Go to /login and enter the username and password
+* Go to /pages
+* Click on the + Page button at the top of the page to add a new top-* level page.
+* Each page in this list has three buttons attached:
+* Edit - Allows you to edit the page (see below for details).
+* + Page - Add a page that will be a child of that page.
+* Delete - Takes you to a confirmation page where you can delete * that page and all its child pages.
+* A page's url is automatically based on its structure, so a page * called 'bart' with a parent called 'homer' would have the url /homer/bart
 
-Editing Pages
+## Editing Pages
 --------------
 You can enter content as erb,html or markdown. You can change the parent page so that the page (and its children) will belong to a new parent. You can also change the position of the page so that it will appear in a different order (The highest positioned page is set as the home page by default).
 
 
-Dependencies
+## Dependencies
 ---------------
 * Sinatra
 * Datamapper (core,validations & timestamps)
