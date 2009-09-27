@@ -1,0 +1,16 @@
+<form action="/snippets/<%= @snippet.name %>" method="post" class="milkshake">
+<input type="hidden" name="_method" value="put" />
+<fieldset id="snippet">
+<legend>Edit Snippet</legend>
+<label for="name">Name</label>
+<input type="text" name="snippet[name]" id="name" value="<%= @snippet.name %>">
+<label for="content">Content</label>
+<textarea rows="10" cols="80" name="snippet[content]" id="content"><%= @snippet.content %></textarea>
+</fieldset>
+<form action="/snippets/<%= @snippet.name %>" method="post">
+<input type="hidden" name="_method" value="delete" />
+<input type="submit" value="Delete" class="milkshake-button">
+</form>
+<input type="submit" value="Save" class="milkshake-button">
+ or <a href="/snippets" class="cancel">cancel</a>
+</form>

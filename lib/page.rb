@@ -290,6 +290,13 @@ def shakedown(text)
       match
     end
   end
+  text.gsub!(/(?:@\{s*)(\w+)(?:\s*\})/) do |match|
+    if snippet=Snippet.get($1)
+     snippet.content
+    else
+      match
+    end
+  end
   #text.gsub!(/(%)(=)?(\s*)(.*)(%)/,'<%\2 \4 %>')
   text = erb(text,:layout => false)
   RDiscount.new(text).to_html
