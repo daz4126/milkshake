@@ -1,0 +1,11 @@
+<form action="/new/snippet" method="post" class="milkshake">
+<fieldset id="snippet">
+<legend>Add A Snippet</legend>
+<label for="name">Name</label>
+<input type="text" name="snippet[name]" id="name" value="<%= @snippet.name %>">
+<label for="content">Content</label>
+<textarea rows="10" cols="80" name="snippet[content]" id="content"><%= @snippet.content %></textarea>
+</fieldset>
+<input type="submit" value="Save" class="milkshake-button">
+ or <a href="/snippets" class="cancel">cancel</a>
+</form>

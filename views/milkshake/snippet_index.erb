@@ -1,0 +1,12 @@
+<h2>Snippets</h2>
+<a href="/new/snippet" class="milkshake-button">+ Snippet</a>
+<% unless @snippets.empty? %>
+<ul class="milkshake-snippets">
+
+<% @snippets.each do |snippet| %>
+<li><%= link_to("/snippets/#{snippet.name}",snippet.name) %></li>
+<% end %>
+</ul>
+<% else %>
+<P>There are no snippets yet!</p>
+<% end %>

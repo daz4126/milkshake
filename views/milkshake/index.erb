@@ -1,6 +1,6 @@
 <h2>Sitemap</h2>
-<%= link_to "/new/page","+ page",:class=>"milkshake-button" if admin?%>
-<% if @pages %>
+<%= link_to "/new/page","+ Page",:class=>"milkshake-button" if admin? %>
+<% unless @pages.empty? %>
 <ul id="pages" class="milkshake-pages">
 
 <% @pages.each do |page| %>
