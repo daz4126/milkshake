@@ -37,7 +37,7 @@ form.milkshake input,form.milkshake textarea
 {padding:3px;border:#cbcbcb solid 1px;
 webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
 form.milkshake input:focus,form.milkshake textarea:focus
-{background:#edf2f7;border:#2b98d6 solid 2px;}
+{background:#ffeeee;border:#ff8080 solid 2px;}
 form.milkshake input{font-size:20px;}
 form.milkshake label{font-size:12px;color:#999;font-weight:bold;}
 form.milkshake label.hidden{display:none;}
