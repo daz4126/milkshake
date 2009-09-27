@@ -12,7 +12,7 @@ body{font-family:arial,sans-serif;color:#333;}
 clear:both;width:100%;}
 
 .milkshake-pages a{font-size:18px;float:left;}
-.milkshake-pages a,.milkshake-pages a:link,.milkshake-pages a:visited{color:#2b98d6;text-decoration:none;}
+.milkshake-pages a,.milkshake-pages a:link,.milkshake-pages a:visited{color:#ff8080;text-decoration:none;}
 .milkshake-pages a:hover{text-decoration:underline;}
 
 .milkshake-page-status{background:#b2b2b2;color:#fff;
@@ -45,10 +45,10 @@ form.milkshake textarea{display:block;width:100%;font-size:14px;margin-top:10px;
 form.milkshake select{font-size:14px;width:auto;}
 form.milkshake a.cancel,form.milkshake a:link.cancel,form.milkshake a:visited.cancel{color:#666}
 
-form.milkshake fieldset#page-info{float:right;width:30%;background:#edf2f7;color:#454545;padding:10px 1%;font-size:12px;
+form.milkshake fieldset#page-info{float:right;width:30%;background:#ff8080;color:#fff;padding:10px 1%;font-size:12px;
 -webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
-form.milkshake fieldset#page-info label{color:#454545;display:block;margin:6px 0;}
-form.milkshake fieldset#page-info a,#page-info a:link,#page-info a:visited{color:#454545;}
+form.milkshake fieldset#page-info label{color:#fff;display:block;margin:6px 0;}
+form.milkshake fieldset#page-info a,#page-info a:link,#page-info a:visited{color:#fff;}
 form.milkshake fieldset#page-info p{font-size:10px;margin:0;float:right;}
 
 form.milkshake-login{margin:30px 0;}
@@ -56,7 +56,7 @@ form.milkshake-login input{font-size:14px;}
 
 /* dashboard */
 #milkshake-dashboard
-{background:#565656 url(images/milkshake-logo.png) top right no-repeat;color:#fff;
+{background:#ff8080 url(images/milkshake-logo.png) top right no-repeat;color:#fff;
 height:80px;
 margin-bottom:40px;padding:10px;
 overflow:hidden;}
@@ -67,14 +67,18 @@ overflow:hidden;}
 .milkshake-buttons{overflow:hidden;list-style:none; solid;margin:0;padding:0;
 zoom:1;display:relative;width:auto;}
 .milkshake-buttons li{float:left;margin-right:10px;}
-.milkshake-buttons a,.milkshake-buttons a:link,.milkshake-buttons a:visited,.milkshake-button
+.milkshake-buttons a,.milkshake-buttons a:link,.milkshake-buttons a:visited,.milkshake-button,form.milkshake input.milkshake-button
 {background:#d3d7da url(images/button.png) 0 50% repeat-x;color:#6a6c74;
 display:inline-block;
 padding:6px 8px;margin:0;
 font-weight:bold;font-size:14px;text-decoration:none;
 -webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;border:none;
 }
-a.milkshake-button{float:left;border:#c8c8c8 solid 1px;margin:5px 10px;}
-.milkshake-buttons a:hover,.milkshake-button:hover
+.milkshake-buttons a:hover,.milkshake-button:hover,form.milkshake input.milkshake-button:hover
 {background:#38a3d9 url(images/button.png) 0 50% repeat-x;color:#fff;
 text-decoration:none;}
+a.milkshake-button{float:left;border:#c8c8c8 solid 1px;margin:5px 10px;}
+a:hover.milkshake-button{background-color:#63d847;}
+.milkshake-buttons a:hover.milkshake-edit-button{background-color:#faef39;}
+.milkshake-buttons a:hover.milkshake-add-button{background-color:#63d847;}
+.milkshake-buttons a:hover.milkshake-delete-button{background-color:#d74741;}

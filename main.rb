@@ -20,7 +20,9 @@ PASSWORD  = "vanilla"
 
 # Helpers
 helpers do
-def link_to url,text
-  "<a href='#{url}'>#{text}</a>"
+def link_to(url,text,opts={})
+  attributes = ""
+  opts.each { |key,value| attributes << key.to_s << "=\"" << value << "\" "}
+  "<a href=\"#{url}\" #{attributes}>#{text}</a>"
 end
 end

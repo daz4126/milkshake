@@ -4,9 +4,9 @@
 
 <% if admin? %>
 <div class="milkshake-buttons">
-<%= link_to page.edit_path,"EDIT" %>
-<%= link_to page.new_child_path,"+ PAGE" %>
-<%= link_to page.delete_path,"DELETE" %>
+<%= link_to page.edit_path,"EDIT",:class=>"milkshake-edit-button" %>
+<%= link_to page.new_child_path,"+ PAGE",:class=>"milkshake-add-button" %>
+<%= link_to page.delete_path,"DELETE",:class=>"milkshake-delete-button" %>
 </div>
 <% end %>
 

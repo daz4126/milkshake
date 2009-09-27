@@ -7,9 +7,9 @@
 
 <% if admin? %>
 <ul class="milkshake-buttons">
-<li><%= link_to @page.edit_path,"Edit" %></li>
-<li><%= link_to @page.new_sibling_path,"+ Sibling" %></li>
-<li><%= link_to @page.new_child_path,"+ Child" %></li>
-<li><%= link_to @page.delete_path,"Delete" %></li>
+<li><%= link_to @page.edit_path,"Edit",:class=>"milkshake-edit-button" %></li>
+<li><%= link_to @page.new_sibling_path,"+ Sibling",:class=>"milkshake-add-button" %></li>
+<li><%= link_to @page.new_child_path,"+ Child",:class=>"milkshake-add-button" %></li>
+<li><%= link_to @page.delete_path,"Delete",:class=>"milkshake-delete-button" %></li>
 </ul>
 <% end %>
