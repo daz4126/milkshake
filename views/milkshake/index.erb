@@ -1,5 +1,5 @@
 <h2>Sitemap</h2>
-<a href="/new/page" class="milkshake-button">+ Page</a>
+<%= link_to "/new/page","+ page",:class=>"milkshake-button" if admin?%>
 <% if @pages %>
 <ul id="pages" class="milkshake-pages">
 
