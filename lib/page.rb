@@ -9,9 +9,9 @@ class Page
   property :content,      Text, :default => "Enter some content here"
   property :created_at, DateTime#, :default => Time.now
   property :updated_at, DateTime
-  property :published_at, DateTime, :default => nil
+  property :published_at, DateTime
   property :position,     Integer, :default => Proc.new { |r, p| r.siblings.empty? ?  1 : r.siblings.size.next }
-  property :parent_id,    Integer, :default => nil
+  property :parent_id,    Integer
   property :show_title,   Boolean, :default => true
   
 # Callbacks  
