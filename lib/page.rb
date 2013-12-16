@@ -4,7 +4,7 @@ class Page
   include DataMapper::Resource
 # Properties
   property :id,           Serial
-  property :title,        String,   :nullable => false, :default => "Title"
+  property :title,        String,  :default => "Title"
   property :permalink,    String,  :default => Proc.new { |r, p| r.slug }
   property :content,      Text, :default => "Enter some content here"
   property :created_at, DateTime#, :default => Time.now
@@ -39,8 +39,8 @@ class Page
   default_scope(:default).update(:order => [:position]) 
 
 # Associations 
-  belongs_to  :parent,    :class_name => "Page",   :child_key => [:parent_id]
-  has n,      :children,  :class_name => "Page",   :child_key => [:parent_id]
+  belongs_to  :parent,    :model => "Page",   :child_key => [:parent_id]
+  has n,      :children,  :model => "Page",   :child_key => [:parent_id]
 
  
 # Some named_scopes
